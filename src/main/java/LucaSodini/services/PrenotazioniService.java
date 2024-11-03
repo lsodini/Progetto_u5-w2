@@ -4,9 +4,9 @@ import LucaSodini.entities.Dipendente;
 import LucaSodini.entities.Prenotazione;
 import LucaSodini.entities.Viaggio;
 import LucaSodini.payloads.NewPrenotazioneDTO;
-import LucaSodini.repositories.DipendenteRepository;
-import LucaSodini.repositories.PrenotazioneRepository;
-import LucaSodini.repositories.ViaggioRepository;
+import LucaSodini.repositories.DipendentiRepository;
+import LucaSodini.repositories.PrenotazioniRepository;
+import LucaSodini.repositories.ViaggiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,13 @@ import java.util.UUID;
 @Service
 public class PrenotazioniService {
     @Autowired
-    private PrenotazioneRepository prenotazioneRepository;
+    private PrenotazioniRepository prenotazioneRepository;
 
     @Autowired
-    private DipendenteRepository dipendenteRepository;
+    private DipendentiRepository dipendenteRepository;
 
     @Autowired
-    private ViaggioRepository viaggioRepository;
+    private ViaggiRepository viaggioRepository;
 
     public Prenotazione createPrenotazione(NewPrenotazioneDTO dto) {
         Dipendente dipendente = dipendenteRepository.findById(dto.dipendenteId()).orElseThrow();
