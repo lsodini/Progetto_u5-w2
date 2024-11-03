@@ -2,6 +2,7 @@ package LucaSodini.services;
 
 
 import LucaSodini.entities.Viaggio;
+import LucaSodini.enums.StatoViaggio;
 import LucaSodini.exceptions.NotFoundException;
 import LucaSodini.payloads.NewViaggioDTO;
 import LucaSodini.repositories.ViaggiRepository;
@@ -39,7 +40,7 @@ public class ViaggiService {
         viaggiRepository.delete(viaggio);
     }
 
-    public Viaggio updateViaggioStato(UUID id, String stato) {
+    public Viaggio updateViaggioStato(UUID id, StatoViaggio stato) {
         Viaggio viaggio = getViaggio(id);
         viaggio.setStato(stato);
         return viaggiRepository.save(viaggio);

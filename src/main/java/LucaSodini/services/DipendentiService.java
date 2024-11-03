@@ -63,7 +63,7 @@ public class DipendentiService {
             Map<String, Object> uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
             String avatarUrl = (String) uploadResult.get("url");
 
-            dipendente.setAvatarUrl(avatarUrl);
+            dipendente.setAvatarURL(avatarUrl);
             dipendentiRepository.save(dipendente);
 
             return avatarUrl;

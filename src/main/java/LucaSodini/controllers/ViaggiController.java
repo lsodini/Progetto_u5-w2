@@ -1,6 +1,7 @@
 package LucaSodini.controllers;
 
 import LucaSodini.entities.Viaggio;
+import LucaSodini.enums.StatoViaggio;
 import LucaSodini.payloads.NewViaggioDTO;
 import LucaSodini.services.ViaggiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/viaggi")
@@ -41,7 +44,7 @@ public class ViaggiController {
     }
 
     @PatchMapping("/{id}/stato")
-    public Viaggio updateViaggioStato(@PathVariable UUID id, @RequestParam String stato) {
+    public Viaggio updateViaggioStato(@PathVariable UUID id, @RequestParam StatoViaggio stato) {
         return viaggiService.updateViaggioStato(id, stato);
     }
 }
