@@ -3,6 +3,7 @@ package LucaSodini.entities;
 import LucaSodini.enums.StatoViaggio;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.UUID;
 

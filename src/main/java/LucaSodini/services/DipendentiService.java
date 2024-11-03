@@ -1,5 +1,6 @@
 package LucaSodini.services;
 
+import LucaSodini.payloads.NewDipendenteDTO;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import LucaSodini.entities.Dipendente;
@@ -25,11 +26,22 @@ public class DipendentiService {
     @Autowired
     private Cloudinary cloudinary;
 
-    public Dipendente saveDipendente(Dipendente dipendente) {
-        dipendentiRepository.findByEmail(dipendente.getEmail()).ifPresent(existingDipendente -> {
-            throw new BadRequestException("Email " + dipendente.getEmail() + " già in uso.");
+    public Dipendente save(NewDipendenteDTO body) {
+
+        dipendentiRepository.findByEmail(body.email()).ifPresent(existingDipendente -> {
+
+            throw new BadRequestException("Email " + body.email() + " già in uso.");
         });
-        return dipendentiRepository.save(dipendente);
+
+
+        Dipendente newDipendente = new Dipendente();
+        newDipendente.setNome(body.nome());
+        newDipendente.setCognome(body.cognome());
+        newDipendente.setEmail(body.email());
+
+
+
+        return dipendentiRepository.save(newDipendente);
     }
 
     public Page<Dipendente> findAllDipendenti(int page, int size) {
